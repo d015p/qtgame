@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/1.jpg</file>
+        <file>res/2.jpg</file>
+        <file>res/3.png</file>
+        <file>res/4.png</file>
+        <file>res/5.png</file>
+        <file>res/ba.png</file>
+        <file>res/background.jpg</file>
+        <file>res/begin.jpg</file>
+        <file>res/laohan.png</file>
+        <file>res/laohan1.jpg</file>
+        <file>res/lecao.png</file>
+        <file>res/lecao1.jpg</file>
+        <file>res/max.png</file>
+        <file>res/max1.jpg</file>
+        <file>res/yin.png</file>
+        <file>res/yin1.png</file>
+        <file>res/begin.png</file>
+        <file>res/tit.png</file>
+        <file>res/return.png</file>
+        <file>res/yin2.png</file>
+        <file>res/ao.png</file>
+    </qresource>
+</RCC>

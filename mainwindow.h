@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include"chooselevel.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -16,6 +16,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void paintEvent(QPaintEvent*);//重新paintevent事件，画背景图
+
+    ChooseLevel*chooseScene=NULL;
 
 private:
     Ui::MainWindow *ui;
