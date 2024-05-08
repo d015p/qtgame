@@ -21,5 +21,21 @@
         <file>res/return.png</file>
         <file>res/yin2.png</file>
         <file>res/ao.png</file>
+        <file>res/ce1.jpg</file>
+        <file>res/ce2.jpg</file>
+        <file>map1.txt</file>
+        <file>res/box.png</file>
+        <file>res/box-2.png</file>
+        <file>res/dot-1.png</file>
+        <file>res/dot-2.png</file>
+        <file>res/dot-3.png</file>
+        <file>res/wall.png</file>
+        <file>res/lun.png</file>
+        <file>res/role.png</file>
+        <file>res/ground.jpg</file>
+        <file>res/role1.png</file>
+        <file>res/lwall.png</file>
+        <file>res/jiang.png</file>
+        <file>res/change.png</file>
     </qresource>
 </RCC>

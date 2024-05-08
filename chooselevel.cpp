@@ -52,7 +52,16 @@ connect(menuBtn1,&MyPushButton::clicked,[=](){
     menuBtn1->zoom1() ;
     QTimer::singleShot(500,this,[=](){
         this->hide();//隐藏页面
+
         bc->show();//进入到选择关卡
+
+        connect(bc,&Bahrain::chooseBack,[=](){
+            this->show();
+            bc->hide();
+        });
+
+
+
     });//延时0.5秒到场景
 });
 
@@ -62,6 +71,14 @@ connect(menuBtn2,&MyPushButton::clicked,[=](){
         QTimer::singleShot(500,this,[=](){
             this->hide();//隐藏页面
             ssc->show();//进入到选择关卡
+
+            connect(ssc,&SilverstoneCircuit::chooseBack,[=](){
+                this->show();
+                ssc->hide();
+            });
+
+
+
         });//延时0.5秒到场景
     });
 connect(menuBtn3,&MyPushButton::clicked,[=](){
@@ -70,6 +87,12 @@ connect(menuBtn3,&MyPushButton::clicked,[=](){
     QTimer::singleShot(500,this,[=](){
         this->hide();//隐藏页面
         shc->show();//进入到选择关卡
+
+        connect(shc,&Shanghai::chooseBack,[=](){
+            this->show();
+            shc->hide();
+        });
+
     });//延时0.5秒到场景
 });
 

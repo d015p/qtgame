@@ -11,17 +11,21 @@ CONFIG += c++17
 SOURCES += \
     bahrain.cpp \
     chooselevel.cpp \
+    gamemap.cpp \
     main.cpp \
     mainwindow.cpp \
     mypushbutton.cpp \
+    role.cpp \
     shanghai.cpp \
     silverstonecircuit.cpp
 
 HEADERS += \
     bahrain.h \
     chooselevel.h \
+    gamemap.h \
     mainwindow.h \
     mypushbutton.h \
+    role.h \
     shanghai.h \
     silverstonecircuit.h
 
@@ -38,4 +42,5 @@ RESOURCES += \
     res1.qrc
 
 DISTFILES += \
+    map1.txt \
     res/ao.png
