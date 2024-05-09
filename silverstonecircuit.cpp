@@ -6,6 +6,10 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include<QDebug>
+#include<QLabel>
+#include<QPixmap>
+#include<QPropertyAnimation>
+
 
 SilverstoneCircuit::SilverstoneCircuit(QWidget *parent)
     : QMainWindow{parent}
@@ -32,7 +36,7 @@ SilverstoneCircuit::SilverstoneCircuit(QWidget *parent)
     mPMap = new GameMap(this);
     //QString fileName =QFileDialog::getOpenFileName(this,"打开地图","./","*.txt");
 
-    if(!mPMap->InitByFile("./MAP/map1.txt"))
+    if(!mPMap->InitByFile("./MAP/map2.txt"))
     {
         QMessageBox::warning(this,"警告","文件打开失败");
     }
@@ -61,7 +65,7 @@ void SilverstoneCircuit::DrawMap(int x,int y)
             switch (mPMap->mPArr[i][j])
             {
             case Road: imgUrl = "";break;
-            case Wall: imgUrl = ":/res/lwall.png";break;
+            case Wall: imgUrl = ":/res/a4.png";break;
             case Box: imgUrl = ":/res/lun.png";break;
             case Point: imgUrl = ":/res/change.png";break;
             case InPoint: imgUrl = ":/res/jiang.png";break;
@@ -80,7 +84,7 @@ void SilverstoneCircuit::paintEvent(QPaintEvent*)
     //画背景
     QPainter painter(this);
     QPixmap pix;
-    pix.load(":/res/background.jpg");
+    pix.load(":/res/sa4.jpg");
     painter.drawPixmap(0,0,this->width(),this->height(),pix);//安放背景
     pix.load(":/res/tit.png");//先加载
     pix=pix.scaled(pix.width(),pix.height()*2);//改变进来的图片的长宽
@@ -131,6 +135,15 @@ void SilverstoneCircuit::keyPressEvent(QKeyEvent* event)
 //碰撞函数逻辑实现
 void SilverstoneCircuit::Collision(int _dRow,int _dCol)//向量移动
 {
+    //胜利图片显示
+    QLabel* winLabel = new QLabel(this);
+    QPixmap tmpPix;
+    tmpPix.load(":/res/laohan1.jpg");
+    winLabel->setGeometry(0,0,tmpPix.width(),tmpPix.height());
+    winLabel->setPixmap(tmpPix);
+    winLabel->setParent(this);
+    winLabel->move((this->width()-tmpPix.width())*0.5 ,-tmpPix.height());
+    winLabel->show();
     //判断位置定义
     int newRow = mRole->mRow + _dRow;
     int newCol = mRole->mCol + _dCol;
@@ -185,6 +198,31 @@ void SilverstoneCircuit::Collision(int _dRow,int _dCol)//向量移动
 
     //否则移动
     mRole->Move(_dRow,_dCol);
+    //判断是否胜利
+    this->isWin=true;
+    for(int i = 0;i < mPMap->mRow;i++)
+    {
+        for(int j = 0;j < mPMap->mCol;j++)
+        {
+            if (mPMap->mPArr[i][j] == Point)//如果有洞元素。证明游戏还没有结束
+            {
+                this->isWin=false;
+                break;
+            }
+        }
+    }
+
+    if(this->isWin==true){
+
+        qDebug()<<"游戏胜利";
+        QPropertyAnimation*animationl=new QPropertyAnimation(winLabel,"geometry");
+        animationl->setDuration(1000);
+        animationl->setStartValue(QRect(winLabel->x(),winLabel->y(),winLabel->width(),winLabel->height()));
+        animationl->setEndValue(QRect(winLabel->x(),winLabel->y()+500, winLabel->width(),winLabel->height()));
+        animationl->setEasingCurve(QEasingCurve::OutBounce);
+        animationl->start();
+
+    }
 
     qDebug() << "人物绘制位置：" << mRole->mPaintPos;
 }

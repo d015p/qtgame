@@ -22,6 +22,8 @@ void DrawMap(int x,int y);//画地图
     Role* mRole;
     //游戏更新定时器
     QTimer* mTimer;
+    //判断是否胜利
+    bool isWin=false;
 
 signals:
  void chooseBack();//发送自定义信号

@@ -53,5 +53,6 @@ bool GameMap::InitByFile(QString fileName)
         }
 
     }
+    return true;
 }
 

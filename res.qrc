@@ -37,5 +37,14 @@
         <file>res/lwall.png</file>
         <file>res/jiang.png</file>
         <file>res/change.png</file>
+        <file>res/bei.jpg</file>
+        <file>res/sa1.jpg</file>
+        <file>res/sa2.jpg</file>
+        <file>res/sa3.jpg</file>
+        <file>res/a2.png</file>
+        <file>res/a1.jpg</file>
+        <file>res/a3.jpg</file>
+        <file>res/a4.png</file>
+        <file>res/sa4.jpg</file>
     </qresource>
 </RCC>
