@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "gamemap.h"
 #include "role.h"
-
+#include <QSoundEffect>//音频类
 class SilverstoneCircuit : public QMainWindow
 {
     Q_OBJECT

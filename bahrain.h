@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "gamemap.h"
 #include "role.h"
+#include <QSoundEffect>//音频类
 class Bahrain : public QMainWindow
 {
     Q_OBJECT
@@ -24,6 +25,8 @@ void DrawMap(int x,int y);//画地图
     QTimer* mTimer;
     //判断是否胜利
     bool isWin=false;
+    //背景音乐
+    void Play();
 
 signals:
  void chooseBack();//发送自定义信号

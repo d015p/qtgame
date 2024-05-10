@@ -20,6 +20,8 @@ Bahrain::Bahrain(QWidget *parent)
     setWindowTitle("巴林国际赛道");//项目起名
 
 
+
+
     MyPushButton*backBtn=new MyPushButton(":/res/return.png");
     backBtn->setParent(this);
     backBtn->move(this->width()-backBtn->width(),this->height()-backBtn->height());
@@ -50,6 +52,12 @@ Bahrain::Bahrain(QWidget *parent)
     connect(mTimer,&QTimer::timeout,[this](){this->update();});
 
 }
+
+void Bahrain:: Play(){
+
+
+};
+
 //实现地图的搭建,读入文件的地图编码，实现画图渲染
 void Bahrain::DrawMap(int x,int y)
 {
@@ -85,7 +93,6 @@ void Bahrain::paintEvent(QPaintEvent*)
     pix.load(":/res/tit.png");//先加载
     pix=pix.scaled(pix.width(),pix.height()*2);//改变进来的图片的长宽
     painter.drawPixmap(70,50,pix);
-
 
 
 

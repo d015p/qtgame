@@ -18,7 +18,21 @@ ChooseLevel::ChooseLevel(QWidget *parent)
     connect (quitAction, &QAction::triggered, [=](){
         this->close();
     }   );
-//返回按钮
+//设置不同场景的音效背景
+    QSoundEffect * startSound = new QSoundEffect(this);//创建对象
+    startSound->setSource(QUrl::fromLocalFile(":/res/Brian Tyler - Formula 1 Theme.wav.wav"));//添加资源
+    startSound->setLoopCount(QSoundEffect::Infinite);//设置循环次数int；  QSoundEffect::Infinite 枚举值 无限循环
+    startSound->play();//软件启动自动播放
+
+    QSoundEffect * startSound1 = new QSoundEffect(this);//创建对象
+    startSound1->setSource(QUrl::fromLocalFile(":/res/Bemax - Sea of Tranquility.wav"));//添加资源
+    startSound1->setLoopCount(QSoundEffect::Infinite);//设置循环次数int；  QSoundEffect::Infinite 枚举值 无限循环
+
+    QSoundEffect * startSound2 = new QSoundEffect(this);//创建对象
+    startSound2->setSource(QUrl::fromLocalFile(":/res/prod_ mosquito - MAX VERSTAPPEN (JERSEY CLUB REMIX).wav"));//添加资源
+    startSound2->setLoopCount(QSoundEffect::Infinite);//设置循环次数int；  QSoundEffect::Infinite 枚举值 无限循环
+
+
     MyPushButton*backBtn=new MyPushButton(":/res/return.png");
     backBtn->setParent(this);
     backBtn->move(this->width()-backBtn->width(),this->height()-backBtn->height());
@@ -51,13 +65,21 @@ connect(menuBtn1,&MyPushButton::clicked,[=](){
 
     menuBtn1->zoom1() ;
     QTimer::singleShot(500,this,[=](){
+        //位置优化
+        bc->setGeometry(this->geometry());
         this->hide();//隐藏页面
 
         bc->show();//进入到选择关卡
 
+         startSound->stop();
+         startSound1->play();
+
         connect(bc,&Bahrain::chooseBack,[=](){
+            this->setGeometry(bc->geometry());
             this->show();
             bc->hide();
+             startSound->play();
+             startSound1->stop();
         });
 
 
@@ -69,12 +91,18 @@ connect(menuBtn2,&MyPushButton::clicked,[=](){
 
         menuBtn2->zoom1() ;
         QTimer::singleShot(500,this,[=](){
+            ssc->setGeometry(this->geometry());
             this->hide();//隐藏页面
             ssc->show();//进入到选择关卡
 
+            startSound->stop();
+            startSound1->play();
             connect(ssc,&SilverstoneCircuit::chooseBack,[=](){
+                this->setGeometry(ssc->geometry());
                 this->show();
                 ssc->hide();
+                startSound->play();
+                startSound1->stop();
             });
 
 
@@ -85,12 +113,18 @@ connect(menuBtn3,&MyPushButton::clicked,[=](){
 
     menuBtn3->zoom1() ;
     QTimer::singleShot(500,this,[=](){
+        shc->setGeometry(this->geometry());
         this->hide();//隐藏页面
         shc->show();//进入到选择关卡
 
+        startSound->stop();
+        startSound2->play();
         connect(shc,&Shanghai::chooseBack,[=](){
+            this->setGeometry(shc->geometry());
             this->show();
             shc->hide();
+            startSound->play();
+            startSound2->stop();
         });
 
     });//延时0.5秒到场景

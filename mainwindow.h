@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include"chooselevel.h"
+#include <QSoundEffect>//音频类
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;

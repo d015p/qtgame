@@ -17,6 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
         this->close();
     });//实现退出按钮
 
+    QSoundEffect * startSound = new QSoundEffect(this);//创建对象
+    startSound->setSource(QUrl::fromLocalFile(":/res/Brian Tyler - Formula 1 Theme.wav.wav"));//添加资源
+    startSound->setLoopCount(QSoundEffect::Infinite);//设置循环次数int；  QSoundEffect::Infinite 枚举值 无限循环
+    startSound->play();//软件启动自动播放
+
+
 //开始按钮
     MyPushButton*startBtn=new MyPushButton(":/res/begin.png");
     startBtn->setParent(this);
@@ -25,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     chooseScene=new ChooseLevel;//实例化关卡场景
 
     connect(chooseScene,&ChooseLevel::chooseBack,this,[=](){
-
+        this->setGeometry( chooseScene->geometry());
         chooseScene->hide();
         this->show();
         //实现监听信号返回
@@ -36,11 +42,13 @@ MainWindow::MainWindow(QWidget *parent)
         startBtn->zoom1() ;
 
         QTimer::singleShot(500,this,[=](){
+//设置位置优化
+            chooseScene->setGeometry(this->geometry());
 
             this->hide();//隐藏主页面
             chooseScene->show();//进入到选择关卡
 
-
+            startSound->stop();
 
         });//延时0.5秒进入到选择关卡
 

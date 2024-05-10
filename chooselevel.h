@@ -5,7 +5,7 @@
 #include"silverstonecircuit.h"
 #include"shanghai.h"
 #include"bahrain.h"
-
+#include <QSoundEffect>//音频类
 class ChooseLevel : public QMainWindow
 {
     Q_OBJECT
